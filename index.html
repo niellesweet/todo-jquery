@@ -8,21 +8,29 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-	<header class="container">
+	<header>
 		<div class="row">
-			<div class="col offset-s2 s8">
-				<h1>To Do App</h1>
+			<div class="col s12  indigo accent-3">
+				<h1 class="center-align">To Do App</h1>
 			</div>
 		</div>
 	</header>
-	<section class="container">
-		<div class="col offset-s3 s6">
-			<ul id="list-items"></ul>
-			<form class="add-items">
-  				<input type="text" class="form-control" id="todo-list-item" placeholder="What do you need to do today?">
-  				<button class="add" type="submit">Add to List</button>
-			</form>
-		</div>
+<div class="container">
+  	<div class="row">
+    	<div class="col offset-s4 s4">
+      		<h3>To Do list:</h3>
+      		<form action="#">
+        		<input type="text" placeholder="Add new task">
+        		<button id="addBtn">Agregar</button>
+      		</form>
+      		<ul id="myList">
+        		<li><input type="checkbox" class="check"><button class="rmvBtn">x</button></li>
+        		<li class="done"><input type="checkbox" class="check" checked><button class="rmvBtn">x</button></li>
+        		<li><input type="checkbox" class="check"><button class="rmvBtn">x</button></li>
+      		</ul>
+    	</div>
+  	</div>
+</div>
 	</section>
 	<script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>

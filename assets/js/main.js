@@ -1,34 +1,30 @@
-$(document).ready(function () {
-  $('#list-items').html(localStorage.getItem('listItems'));
-  $('.add-items').submit(function(event)
-  {
+var $input = $('input'),
+    $btn = $('#addBtn'),
+    $ul = $('#myList'),
+    $rmvBtn = $('.rmvBtn');
 
-event.preventDefault();
-  var item = $('#todo-list-item').val();
-
-  if(item){
-    $('#list-items').append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a><hr></li>");
-      localStorage.setItem('listItems', $('#list-items').html());
-      $('#todo-list-item').val("");
+  $btn.on('click', function(e) {
+    e.preventDefault();
+    if ($input.val() == '') {
+      alert('Add new task please..');
+    } else {
+      $ul.prepend('<li><input type="checkbox" class="check"> ' + $input.val() + ' <button class="rmvBtn">x</button></li>');
+      $input.val('');
     }
   });
-  $(document).on('change', '.checkbox', function()
-  {
-    if($(this).attr('checked')){
-      $(this).removeAttr('checked');
+
+  function removeItem() {
+    $(this).closest('li').remove();
+  }
+
+  function markThis() {
+    if (this.checked) {
+      $(this).closest('li').addClass('done');
+    } else {
+      $(this).closest('li').removeClass('done');
     }
-    else {
-      $(this).attr('checked', 'checked');
-    }
-    $(this).parent().toggleClass('completed');
+  }
 
-    localStorage.setItem('listItems', $('#list-items').html());
-  });
+  $(document).on('click', '.check', markThis);
 
-  $(document).on('click', '.remove', function()
-  {
-    $(this).parent().remove();
-
-    localStorage.setItem('listItems', $('#list-items').html());
-  });
-});
+  $(document).on('click', '.rmvBtn', removeItem);
